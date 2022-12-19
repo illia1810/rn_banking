@@ -1,5 +1,6 @@
 import React, {FC} from 'react';
 import {Pressable, StyleProp, ViewStyle} from 'react-native';
+import EyeIcon from '../EyeIcon';
 import EyeOffIcon from '../EyeOffIcon';
 
 interface IProps {
@@ -15,7 +16,7 @@ const EyeButton: FC<IProps> = ({
 }) => {
   return (
     <Pressable onPress={toggleVisible} style={customStyle} testID="eyeButton">
-      {isElementHidden ? <EyeOffIcon /> : <EyeOffIcon />}
+      {isElementHidden ? <EyeOffIcon /> : <EyeIcon />}
     </Pressable>
   );
 };

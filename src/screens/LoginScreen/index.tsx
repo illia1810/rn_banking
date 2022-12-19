@@ -60,6 +60,14 @@ const LoginScreen: FC<
 
   const [rememberValue, setRememberValue] = useState(true);
 
+  const onSubmit = async (data: TLoginFormData) => {
+    if (data.login === 'Admin' && data.password === 'password') {
+      await console.log('Success');
+    } else {
+      console.log('Wrong data');
+    }
+  };
+
   return (
     <LinearGradient
       colors={['#E4EBF5', '#E4EBF5', '#E4EBF5']}
@@ -132,6 +140,8 @@ const LoginScreen: FC<
                   backgroundInactive={COLORS.RED}
                   circleActiveColor={COLORS.WHITE}
                   circleInActiveColor={COLORS.WHITE}
+                  circleBorderActiveColor={COLORS.GREY}
+                  circleBorderInactiveColor={COLORS.GREY}
                   changeValueImmediately={true}
                   renderActiveText={false}
                   renderInActiveText={false}
@@ -146,7 +156,7 @@ const LoginScreen: FC<
             <View style={styles.buttonsContainer}>
               <CustomButton
                 buttonType="primary"
-                handlePress={handleSubmit(data => console.log(data))}
+                handlePress={handleSubmit(onSubmit)}
                 title="Login"
                 customStyle={styles.loginButton}
               />
