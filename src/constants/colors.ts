@@ -1,0 +1,14 @@
+export enum COLORS {
+  RED = '#F43131',
+  GREY = '#DDDDDE',
+  GREY_SEC = '#78787A',
+  GREY_ALT = '#9E9E9E',
+  AURO_METAL = '#6A7D82',
+  DARK_GREY = '#828282',
+  DARK = '#4F4F4F',
+  WHITE = '#FFFFFF',
+  GREEN = '#7DB94A',
+  LIGHT_GREEN = '#DCE6AA',
+  MARINE_BLUE = '#097F8D',
+  BLACK = '#000000',
+}
