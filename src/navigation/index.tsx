@@ -3,8 +3,12 @@ import {
   NavigationContainer,
   useNavigationContainerRef,
 } from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
 import {AuthenticationStack} from './stacks';
+import BottomTabBar from './tab/BottomTabBar';
+
+const RootStack = createStackNavigator();
 
 const RootNavigator: React.FC = () => {
   const navigationRef = useNavigationContainerRef();
@@ -12,7 +16,18 @@ const RootNavigator: React.FC = () => {
 
   return (
     <NavigationContainer ref={navigationRef}>
-      <AuthenticationStack />
+      <RootStack.Navigator>
+        <RootStack.Screen
+          name="LoginPage"
+          component={AuthenticationStack}
+          options={{headerShown: false}}
+        />
+        <RootStack.Screen
+          name="App"
+          component={BottomTabBar}
+          options={{headerShown: false}}
+        />
+      </RootStack.Navigator>
     </NavigationContainer>
   );
 };

@@ -14,7 +14,7 @@ export default StyleSheet.create({
     position: 'relative',
   },
   labelContainer: {
-    backgroundColor: 'white',
+    backgroundColor: '#E4EBF5',
     alignSelf: 'flex-start',
     paddingHorizontal: 3,
     marginStart: 20,
@@ -22,7 +22,7 @@ export default StyleSheet.create({
     elevation: 1,
     shadowColor: 'white',
     position: 'absolute',
-    top: -10,
+    top: -6,
   },
   labelText: {
     color: COLORS.GREY_ALT,
