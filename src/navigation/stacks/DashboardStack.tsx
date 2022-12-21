@@ -1,5 +1,6 @@
 import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
+import {CustomHeader} from '../../components';
 import {ROUTES} from '../../constants';
 import {DashboardContainer} from '../../screens';
 
@@ -11,7 +12,11 @@ const DashboardStackNavigator: React.FC = () => {
       <DashboardStack.Screen
         name={ROUTES.TABS.DASHBOARD}
         component={DashboardContainer}
-        options={{headerShown: false}}
+        options={{
+          header: () => {
+            return <CustomHeader goBackButton title="Account" bellIcon />;
+          },
+        }}
       />
     </DashboardStack.Navigator>
   );

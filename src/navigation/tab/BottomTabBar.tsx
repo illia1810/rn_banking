@@ -10,9 +10,11 @@ import {
 } from '../stacks';
 import {
   DebitCard,
+  DebitCardGreen,
   DotsGreen,
   DotsGrey,
   MobileSmall,
+  MobileSmallGreen,
   PersonActive,
   PersonInActive,
   TransferActive,
@@ -32,17 +34,9 @@ const BottomTabBar = () => {
             case ROUTES.TABS.TRANSFERS:
               return focused ? <TransferActive /> : <TransferInActive />;
             case ROUTES.TABS.AIRTIME:
-              return focused ? (
-                <MobileSmall fill={COLORS.GREEN} />
-              ) : (
-                <MobileSmall />
-              );
+              return focused ? <MobileSmallGreen /> : <MobileSmall />;
             case ROUTES.TABS.PAYMENTS:
-              return focused ? (
-                <DebitCard fill={COLORS.GREEN} />
-              ) : (
-                <DebitCard />
-              );
+              return focused ? <DebitCardGreen /> : <DebitCard />;
             case ROUTES.TABS.MORE:
               return focused ? <DotsGreen /> : <DotsGrey />;
           }
@@ -53,6 +47,7 @@ const BottomTabBar = () => {
       <Tab.Screen
         name={ROUTES.TABS.DASHBOARD}
         component={DashboardStackNavigator}
+        options={{headerShown: false}}
       />
       <Tab.Screen
         name={ROUTES.TABS.TRANSFERS}
