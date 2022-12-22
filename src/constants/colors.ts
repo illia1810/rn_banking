@@ -17,4 +17,5 @@ export enum COLORS {
   LIGHT_PINK = 'rgba(210,151,151,0.2)',
   TRANSPARENT = 'transparent',
   BLACK_ALT = '#2D2D2D',
+  LIGHT_BLUE = '#EFF1F5',
 }

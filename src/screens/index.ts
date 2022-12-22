@@ -4,3 +4,6 @@ export {default as TransfersMainContainer} from './Transfers/TransfersMainContai
 export {default as AirtimeContainer} from './AirtimeScreen/AirtimeContainer';
 export {default as PaymentContainer} from './PaymentsScreen/PaymentContainer';
 export {default as MoreContainer} from './More/MoreContainer';
+export {default as MainTransactionHistoryContainer} from './TransactionHistory/MainScreen/MainTransactionHistoryContainer';
+export {default as AllTransactionsContainer} from './TransactionHistory/AllTransactionsScreen/AllTransactionsContainer';
+export {default as MobileTransactionsContainer} from './TransactionHistory/MobileTransactionsScreen/MobileTransactionsContainer';

@@ -33,3 +33,6 @@ export {default as Schedule} from './schedule.svg';
 export {default as TV} from './tv.svg';
 export {default as MobileSmallGreen} from './mobileSmallGreen.svg';
 export {default as DebitCardGreen} from './debitCardGreen.svg';
+export {default as Star} from './star.svg';
+export {default as MobileGreen} from './mobileGreen.svg';
+export {default as GreyRightArrow} from './greyRightArrow.svg';
