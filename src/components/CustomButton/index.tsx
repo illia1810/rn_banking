@@ -39,9 +39,8 @@ const CustomButton: FC<ICustomButtonProps> = ({
         customStyle,
       ]}
       {...rest}>
-      <Text style={[styles.text, styles[`${buttonType}Text`]]}>
-        {title || children}
-      </Text>
+      <Text style={[styles.text, styles[`${buttonType}Text`]]}>{title}</Text>
+      {children}
     </Pressable>
   );
 };

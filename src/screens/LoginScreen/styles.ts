@@ -5,6 +5,11 @@ export default StyleSheet.create({
   safeArea: {
     flex: 1,
   },
+  outerContainer: {
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    height: '100%',
+  },
   gradientWrapper: {
     height: '100%',
   },
@@ -66,6 +71,8 @@ export default StyleSheet.create({
   },
   biometricButton: {
     maxWidth: 50,
+    maxHeight: 50,
+    paddingTop: 0,
     borderRadius: 25,
   },
   centeredText: {
@@ -77,5 +84,32 @@ export default StyleSheet.create({
     fontSize: 12,
     color: COLORS.DARK_GREY,
     fontWeight: '600',
+  },
+  bottomContainer: {
+    flexDirection: 'row',
+  },
+  bottomButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 18,
+    borderRightColor: COLORS.LIGHT_GREY,
+    borderRightWidth: 1,
+  },
+  bottomButtonNoBorder: {
+    borderRightColor: 'transparent',
+  },
+  blueText: {
+    color: COLORS.MARINE_BLUE,
+    fontSize: 12,
+    marginLeft: 8,
+  },
+  whiteText: {
+    color: COLORS.WHITE,
+    zIndex: 999,
+  },
+  modal: {
+    position: 'absolute',
+    top: 20,
+    right: 30,
   },
 });
