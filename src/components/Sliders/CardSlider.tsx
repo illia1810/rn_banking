@@ -1,3 +1,4 @@
+import {useNavigation} from '@react-navigation/native';
 import React, {FC} from 'react';
 import {Dimensions, Pressable, StyleSheet, Text, View} from 'react-native';
 import Carousel, {Pagination} from 'react-native-snap-carousel';
@@ -30,6 +31,12 @@ const CardSlider: FC<ICardSliderProps> = ({
   onSnapToItem,
   isScrollEnabled,
 }) => {
+  const navigation = useNavigation();
+
+  const goToHistory = () => {
+    navigation.navigate('Transaction History');
+  };
+
   const renderItem = ({item, index}: {item: Card; index: number}) => {
     return (
       <View key={index} style={styles.cardWrapper}>
@@ -45,7 +52,7 @@ const CardSlider: FC<ICardSliderProps> = ({
             <Text style={styles.textPrimary}>
               Account: {item.accountNumber}
             </Text>
-            <Pressable style={styles.transactionHistory}>
+            <Pressable style={styles.transactionHistory} onPress={goToHistory}>
               <HistoryGreen />
               <Text style={styles.textSecondary}>Transaction History</Text>
             </Pressable>

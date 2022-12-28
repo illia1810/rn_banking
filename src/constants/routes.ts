@@ -11,4 +11,10 @@ export enum TABS {
   MORE = 'More',
 }
 
-export default {AUTHENTICATION, TABS};
+export enum TRANSACTION_HISTORY {
+  MAIN = 'Transaction History',
+  ALL = 'All Transactions',
+  MOBILE = 'Mobile Transactions',
+}
+
+export default {AUTHENTICATION, TABS, TRANSACTION_HISTORY};
