@@ -1,5 +1,7 @@
 export enum COLORS {
   RED = '#F43131',
+  RED_SEC = '#B72224',
+  RED_ALT = '#D91D05',
   GREY = '#DDDDDE',
   GREY_SEC = '#78787A',
   GREY_ALT = '#9E9E9E',
@@ -12,6 +14,7 @@ export enum COLORS {
   WHITE = '#FFFFFF',
   GREEN = '#7DB94A',
   LIGHT_GREEN = '#DCE6AA',
+  GREEN_SEC = '#4CB262',
   MARINE_BLUE = '#097F8D',
   BLACK = '#000000',
   LIGHT_PINK = 'rgba(210,151,151,0.2)',
