@@ -17,4 +17,10 @@ export enum TRANSACTION_HISTORY {
   MOBILE = 'Mobile Transactions',
 }
 
-export default {AUTHENTICATION, TABS, TRANSACTION_HISTORY};
+export enum TRANSFERS {
+  MAIN = 'Transfers dashboard',
+  BETWEEN_ACCOUNTS_FIRST = 'Between my accounts first',
+  BETWEEN_ACCOUNTS_SECOND = 'Between my accounts second',
+}
+
+export default {AUTHENTICATION, TABS, TRANSACTION_HISTORY, TRANSFERS};

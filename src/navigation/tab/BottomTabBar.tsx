@@ -52,6 +52,7 @@ const BottomTabBar = () => {
       <Tab.Screen
         name={ROUTES.TABS.TRANSFERS}
         component={TransferStackNavigator}
+        options={{headerShown: false}}
       />
       <Tab.Screen
         name={ROUTES.TABS.AIRTIME}
