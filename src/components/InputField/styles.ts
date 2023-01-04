@@ -24,6 +24,9 @@ export default StyleSheet.create({
     position: 'absolute',
     top: -6,
   },
+  labelWhite: {
+    backgroundColor: COLORS.WHITE,
+  },
   labelText: {
     color: COLORS.GREY_ALT,
     fontSize: 10,
@@ -32,24 +35,17 @@ export default StyleSheet.create({
     display: 'none',
   },
   textInput: {
-    height: 48,
+    //height: 48,
     color: COLORS.DARK,
     borderColor: COLORS.GREY,
     borderRadius: 24,
     borderWidth: 1,
     paddingLeft: 20,
-    ...Platform.select({
-      android: {
-        fontSize: 16,
-        borderWidth: 1,
-        borderRadius: 10,
-        paddingHorizontal: 24,
-      },
-      ios: {
-        fontSize: 17,
-        borderBottomWidth: 1,
-      },
-    }),
+    paddingVertical: 15,
+    fontSize: 12,
+  },
+  textInputWithError: {
+    borderColor: COLORS.RED,
   },
   clearButton: {
     width: ICON_BOX_SIZE,
