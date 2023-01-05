@@ -1,6 +1,7 @@
 export type TransfersMainProps = {
   onPressViewAllTransaction: () => void;
   onPressBetweenMyAccounts: () => void;
+  profileImagePath: string | undefined;
 };
 
 export type TTransaction = {
