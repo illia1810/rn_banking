@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import RBSheet from 'react-native-raw-bottom-sheet';
 import {Calendar, Cross, DownArrow} from '../../../assets/svg';
-import {AllTransaction, DatePickerInput} from '../../../components';
+import {AllTransaction, BottomOptionsList, DatePickerInput} from '../../../components';
 import CustomButton from '../../../components/CustomButton';
 import styles from './styles';
 
@@ -190,29 +190,12 @@ const AllTransactionsView = () => {
             display: 'none',
           },
         }}>
-        <View style={styles.topLabel}>
-          <Text style={styles.topLabelText}>Choose Account</Text>
-          <Pressable
-            onPress={() => refRBSheetAccount.current?.close()}
-            style={styles.closeButton}>
-            <Cross />
-          </Pressable>
-        </View>
-        <View>
-          <FlatList
-            data={optionsList}
-            renderItem={option => (
-              <TouchableOpacity
-                key={option.item.key}
-                onPress={() => setAccountInputValue(option.item.option)}
-                style={styles.accountOptionContainer}>
-                <Text style={styles.accountOptionText}>
-                  {option.item.option}
-                </Text>
-              </TouchableOpacity>
-            )}
-          />
-        </View>
+        <BottomOptionsList
+          title={'Choose Account'}
+          dataArray={optionsList}
+          onOptionPress={setAccountInputValue}
+          onClosePress={() => refRBSheetAccount.current?.close()}
+        />
       </RBSheet>
       <RBSheet
         ref={refRBSheet}

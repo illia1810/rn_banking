@@ -8,6 +8,7 @@ export enum COLORS {
   LIGHT_GREY = '#C4C4C4',
   GREY_BG = '#F8F8F8',
   GREY_TEXT = '#909090',
+  GREY_TEXT_SEC = '#818181',
   AURO_METAL = '#6A7D82',
   DARK_GREY = '#828282',
   DARK = '#4F4F4F',

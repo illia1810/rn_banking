@@ -21,6 +21,8 @@ interface IInputFieldProps extends TextInputProps {
   customStyle?: StyleProp<ViewStyle>;
   isError?: boolean;
   keyboardType: KeyboardTypeOptions;
+  moneyInput?: boolean;
+  whiteLabelBG?: boolean;
 }
 
 const InputField: FC<IInputFieldProps> = ({
@@ -32,10 +34,13 @@ const InputField: FC<IInputFieldProps> = ({
   customStyle,
   isError = false,
   keyboardType,
+  moneyInput,
+  whiteLabelBG = false,
   ...rest
 }) => {
   const [isPasswordHidden, setIsPasswordHidden] = useState(type === 'password');
   const [topLabelText, setTopLabelText] = useState('');
+  //const [moneyValue, setMoneyValue] = useState('');
 
   const togglePasswordVisible = () => setIsPasswordHidden(!isPasswordHidden);
   const textInputChange = (text: string) => {
@@ -46,6 +51,16 @@ const InputField: FC<IInputFieldProps> = ({
       setTopLabelText('');
     }
   };
+  // const addMoneySign = (inputValue: string) => {
+  //   if (inputValue.length > 0 && !inputValue.includes('₦')) {
+  //     setMoneyValue(`₦${value}`);
+  //   }
+  //   if (moneyValue === '₦ ') {
+  //     setMoneyValue('');
+  //   } else {
+  //     setMoneyValue('');
+  //   }
+  // };
 
   return (
     <>
@@ -53,6 +68,7 @@ const InputField: FC<IInputFieldProps> = ({
         <View
           style={[
             styles.labelContainer,
+            whiteLabelBG && styles.labelWhite,
             topLabelText === '' && styles.labelHidden,
           ]}>
           <Text style={styles.labelText}>{topLabelText}</Text>
@@ -61,10 +77,14 @@ const InputField: FC<IInputFieldProps> = ({
       <View>
         <TextInput
           onChangeText={textInputChange}
-          value={value}
+          value={moneyInput ? `₦ ${value}` : value}
           placeholder={placeholder}
           keyboardType={keyboardType}
-          style={[styles.textInput, customStyle]}
+          style={[
+            styles.textInput,
+            isError && styles.textInputWithError,
+            customStyle,
+          ]}
           secureTextEntry={isPasswordHidden}
           {...rest}
         />

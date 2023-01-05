@@ -49,3 +49,4 @@ export {default as Walet} from './walet.svg';
 export {default as GreySquare} from './greySquare.svg';
 export {default as Museum} from './museum.svg';
 export {default as LogoSmall} from './logoSmall.svg';
+export {default as LikeIcon} from './like.svg';

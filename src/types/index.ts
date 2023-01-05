@@ -3,4 +3,8 @@ export type {
   RootStackScreenProps,
 } from './navigationTypes';
 
-export type {TLoginFormData} from './forms';
+export type {
+  TLoginFormData,
+  TTransferFormData,
+  TTransferConfirmation,
+} from './forms';
