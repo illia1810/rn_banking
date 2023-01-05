@@ -8,6 +8,7 @@ import DropdownSelect from './DropdownSelect';
 import DatePickerInput from './DatePickerInput';
 import MobileTransaction from './MobileTransaction';
 import AllTransaction from './AllTransaction';
+import LargeSquareWhiteButton from './LargeSquareWhiteButton';
 
 export {
   InputField,
@@ -20,4 +21,5 @@ export {
   DatePickerInput,
   MobileTransaction,
   AllTransaction,
+  LargeSquareWhiteButton,
 };

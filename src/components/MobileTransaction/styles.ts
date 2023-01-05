@@ -44,9 +44,9 @@ export default StyleSheet.create({
   },
   greenCorner: {
     alignItems: 'center',
-    flexDirection: 'column',
+    paddingVertical: 20,
     backgroundColor: COLORS.LIGHT_GREEN,
     height: '100%',
-    width: 2,
+    width: 4,
   },
 });

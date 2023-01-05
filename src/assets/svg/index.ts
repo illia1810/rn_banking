@@ -45,3 +45,7 @@ export {default as CircularArrow} from './circularArrow.svg';
 export {default as Cross} from './cross.svg';
 export {default as RedLeftArrow} from './redLeftArrow.svg';
 export {default as GreenRightArrow} from './greenRightArrow.svg';
+export {default as Walet} from './walet.svg';
+export {default as GreySquare} from './greySquare.svg';
+export {default as Museum} from './museum.svg';
+export {default as LogoSmall} from './logoSmall.svg';
