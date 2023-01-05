@@ -1,5 +1,5 @@
 import React from 'react';
-import {FlatList, Pressable, Text, View} from 'react-native';
+import {FlatList, Image, Pressable, Text, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {GreySquare, LogoSmall, Museum, Walet} from '../../assets/svg';
 import {LargeSquareWhiteButton, MobileTransaction} from '../../components';
@@ -103,13 +103,21 @@ const transactionData: TTransaction[] = [
 const TransfersMainView = ({
   onPressViewAllTransaction,
   onPressBetweenMyAccounts,
+  profileImagePath,
 }: TransfersMainProps) => {
   return (
     <SafeAreaView edges={['left', 'right', 'bottom']} style={styles.safeArea}>
       <View style={styles.topContainer}>
-        <View>
-          <Text style={styles.textPrimaryTop}>Good Morning,</Text>
-          <Text style={styles.textPrimaryTop}>Mr. Oladele Ahmed</Text>
+        <View style={styles.userInfoWrapper}>
+          {profileImagePath ? (
+            <Image source={{uri: profileImagePath}} style={styles.imageSize} />
+          ) : (
+            <View style={[styles.imageSize, styles.mockupImage]} />
+          )}
+          <View>
+            <Text style={styles.textPrimaryTop}>Good Morning,</Text>
+            <Text style={styles.textPrimaryTop}>Mr. Oladele Ahmed</Text>
+          </View>
         </View>
         <View>
           <Text style={[styles.textPrimaryTop, styles.rightText]}>

@@ -23,4 +23,10 @@ export enum TRANSFERS {
   BETWEEN_ACCOUNTS_SECOND = 'Between my accounts second',
 }
 
-export default {AUTHENTICATION, TABS, TRANSACTION_HISTORY, TRANSFERS};
+export enum MORE {
+  MAIN = 'More list',
+  MANAGE_BIOMETRICS = 'Manage biometrics',
+  PROFILE_IMAGE = 'Profile image',
+}
+
+export default {AUTHENTICATION, TABS, TRANSACTION_HISTORY, TRANSFERS, MORE};

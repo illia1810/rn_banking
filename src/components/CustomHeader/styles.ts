@@ -1,5 +1,7 @@
-import {StyleSheet} from 'react-native';
+import {Dimensions, StyleSheet} from 'react-native';
 import {COLORS} from '../../constants';
+
+const textWidth = Dimensions.get('screen').width - 40;
 
 export default StyleSheet.create({
   safeArea: {
@@ -17,5 +19,9 @@ export default StyleSheet.create({
     color: COLORS.WHITE,
     fontSize: 20,
     fontWeight: '600',
+  },
+  titleWithoutRightIcon: {
+    textAlign: 'center',
+    width: textWidth,
   },
 });

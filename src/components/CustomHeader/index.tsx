@@ -24,7 +24,15 @@ const CustomHeader: FC<ICustomHeaderProps> = ({
     <SafeAreaView edges={['top']} style={styles.safeArea}>
       <View style={styles.headerContainer}>
         {goBackButton && <BackArrowButton onPress={goBack} />}
-        {title && <Text style={styles.title}>{title}</Text>}
+        {title && (
+          <Text
+            style={[
+              styles.title,
+              !!goBack && !bellIcon && styles.titleWithoutRightIcon,
+            ]}>
+            {title}
+          </Text>
+        )}
         {bellIcon && <BellIcon />}
       </View>
     </SafeAreaView>

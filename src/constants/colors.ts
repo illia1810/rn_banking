@@ -6,6 +6,7 @@ export enum COLORS {
   GREY_SEC = '#78787A',
   GREY_ALT = '#9E9E9E',
   LIGHT_GREY = '#C4C4C4',
+  LIGHT_GREY_ALT = '#F3F3F3',
   GREY_BG = '#F8F8F8',
   GREY_TEXT = '#909090',
   GREY_TEXT_SEC = '#818181',
@@ -21,5 +22,6 @@ export enum COLORS {
   LIGHT_PINK = 'rgba(210,151,151,0.2)',
   TRANSPARENT = 'transparent',
   BLACK_ALT = '#2D2D2D',
+  BLACK_SEC = '#1D1E1F',
   LIGHT_BLUE = '#EFF1F5',
 }

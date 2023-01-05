@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^2.9.10",
+    "@react-native-async-storage/async-storage": "^1.17.11",
     "@react-native-community/datetimepicker": "^6.7.1",
     "@react-navigation/bottom-tabs": "^6.5.2",
     "@react-navigation/devtools": "^6.0.15",
@@ -26,6 +27,7 @@
     "react-native-custom-switch": "^1.0.7",
     "react-native-flipper": "^0.176.1",
     "react-native-gesture-handler": "^2.8.0",
+    "react-native-image-crop-picker": "^0.39.0",
     "react-native-linear-gradient": "^2.6.2",
     "react-native-pager-view": "^6.1.2",
     "react-native-raw-bottom-sheet": "^2.2.0",

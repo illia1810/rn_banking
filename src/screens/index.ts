@@ -9,3 +9,5 @@ export {default as AllTransactionsContainer} from './TransactionHistory/AllTrans
 export {default as MobileTransactionsContainer} from './TransactionHistory/MobileTransactionsScreen/MobileTransactionsContainer';
 export {default as FirstBMAContainer} from './Transfers/FirstBMAScreen/FirstBMAContainer';
 export {default as SecondBMAContainer} from './Transfers/SecondBMAScreen/SecondBMAContainer';
+export {default as ManageBiometricsContainer} from './More/ManageBiometrics/ManageBiometricsContainer';
+export {default as ProfileImageContainer} from './More/ProfileImage/ProfileImageContainer';

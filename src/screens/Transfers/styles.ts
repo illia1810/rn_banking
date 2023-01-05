@@ -80,4 +80,17 @@ export default StyleSheet.create({
   greySquare: {
     marginBottom: 7,
   },
+  imageSize: {
+    width: 51,
+    height: 51,
+    borderRadius: 51,
+    marginRight: 4,
+  },
+  mockupImage: {
+    backgroundColor: COLORS.LIGHT_GREY_ALT,
+  },
+  userInfoWrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
 });

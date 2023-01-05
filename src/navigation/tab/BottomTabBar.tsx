@@ -62,7 +62,11 @@ const BottomTabBar = () => {
         name={ROUTES.TABS.PAYMENTS}
         component={PaymentsStackNavigator}
       />
-      <Tab.Screen name={ROUTES.TABS.MORE} component={MoreStackNavigator} />
+      <Tab.Screen
+        name={ROUTES.TABS.MORE}
+        component={MoreStackNavigator}
+        options={{headerShown: false}}
+      />
     </Tab.Navigator>
   );
 };
