@@ -7,4 +7,5 @@ export type {
   TLoginFormData,
   TTransferFormData,
   TTransferConfirmation,
+  TBiometricsConfirmation,
 } from './forms';

@@ -172,7 +172,7 @@ const FirstBMAView = ({
             <Text style={styles.secondaryText}>Scheduled Transfer</Text>
             <SwitchButton
               value={scheduleTransfer}
-              setValue={setScheduleTransfer}
+              onValueChange={() => setScheduleTransfer(!scheduleTransfer)}
             />
           </View>
           {scheduleTransfer ? (

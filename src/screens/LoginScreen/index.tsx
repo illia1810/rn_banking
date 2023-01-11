@@ -1,17 +1,20 @@
 import * as yup from 'yup';
-import React, {FC, useState} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import {
   TouchableWithoutFeedback,
   View,
   Keyboard,
   Text,
   Pressable,
+  Alert,
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {useForm, Controller} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
 import LinearGradient from 'react-native-linear-gradient';
 import {Switch} from 'react-native-switch';
+import ReactNativeBiometrics, {BiometryTypes} from 'react-native-biometrics';
+import EncryptedStorage from 'react-native-encrypted-storage';
 
 import {InputField, MenuModal} from '../../components';
 import {COLORS, ROUTES} from '../../constants';
@@ -29,6 +32,8 @@ import {
 import CustomButton from '../../components/CustomButton';
 
 import styles from './styles';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useFocusEffect} from '@react-navigation/native';
 
 const defaultValues = {
   login: '',
@@ -41,7 +46,7 @@ export const regularLoginSchema = yup
       .string()
       .required('This field is required')
       .matches(
-        /(?=^[a-zA-Z\d]{7,}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*|(?=111\d{17}$).*/,
+        /(?=^[a-zA-Z\d]{5,}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*|(?=111\d{17}$).*/,
         'Login and password must contain only letters and numbers',
       ),
     password: yup
@@ -57,30 +62,107 @@ export const regularLoginSchema = yup
 const LoginScreen: FC<
   RootStackScreenProps<typeof ROUTES.AUTHENTICATION.LOGIN_SCREEN>
 > = ({navigation}) => {
+  const [rememberValue, setRememberValue] = useState(true);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [isBiometricsForLogin, setSsBiometricsForLogin] = useState(false);
+  const [biometryTypes, setBiometryType] = useState<
+    'TouchID' | 'FaceID' | 'Biometrics' | null
+  >(null);
+
+  useFocusEffect(() => {
+    AsyncStorage.getItem('BiometricsForLogin').then(val =>
+      val === 'true'
+        ? setSsBiometricsForLogin(true)
+        : setSsBiometricsForLogin(false),
+    );
+  });
+
   const {
     control,
     handleSubmit,
-    resetField,
-    formState: {errors, isSubmitted},
+    setValue,
+    formState: {errors},
   } = useForm<TLoginFormData>({
     defaultValues: defaultValues,
     resolver: yupResolver(regularLoginSchema),
   });
 
-  const [rememberValue, setRememberValue] = useState(true);
-  const [modalVisible, setModalVisible] = useState(false);
+  const rnBiometrics = new ReactNativeBiometrics();
 
-  const onSubmit = (data: TLoginFormData) => {
-    console.log('111');
-    if (data.login === 'Admin' && data.password === 'password') {
-      console.log('Success');
-    } else {
-      console.log('Wrong data');
+  const getBiometricsParams = async () => {
+    try {
+      await rnBiometrics
+        .isSensorAvailable()
+        .then(resultObject => {
+          const {available, biometryType} = resultObject;
+          if (available && biometryType === BiometryTypes.TouchID) {
+            setBiometryType('TouchID');
+          } else if (available && biometryType === BiometryTypes.FaceID) {
+            setBiometryType('FaceID');
+          } else if (available && biometryType === BiometryTypes.Biometrics) {
+            setBiometryType('Biometrics');
+          } else {
+            setBiometryType(null);
+          }
+        })
+        .catch(e => console.log('Error', e));
+    } catch (e) {
+      Alert.alert(String(e));
     }
   };
 
-  const goToNext = () => {
-    navigation.navigate('App');
+  useEffect(() => {
+    getBiometricsParams();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const onSubmit = (data: TLoginFormData) => {
+    console.log('data', data);
+    try {
+      if (data.login === 'Admin1' && data.password === 'password1') {
+        navigation.navigate('App', {
+          data,
+          availableBiometrics: biometryTypes,
+        });
+      }
+    } catch (e) {
+      console.log(errors);
+    }
+  };
+
+  const handleBiometricsLogin = () => {
+    try {
+      rnBiometrics
+        .simplePrompt({promptMessage: `Use ${String(biometryTypes)}`})
+        .then(async resultObject => {
+          const {success} = resultObject;
+          const loginFromStorage = await EncryptedStorage.getItem(
+            'LoginForNirsal',
+          );
+          const passwordFromStorage = await EncryptedStorage.getItem(
+            'PasswordForNirsal',
+          );
+          if (success && loginFromStorage && passwordFromStorage) {
+            setValue('login', loginFromStorage);
+            setValue('password', passwordFromStorage);
+            handleSubmit(onSubmit)();
+          } else {
+            Alert.alert('Login with biometrics failed', '', [
+              {
+                text: 'Cancel',
+              },
+            ]);
+          }
+        })
+        .catch(e => Alert.alert(String(e)));
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const clearStorages = () => {
+    AsyncStorage.clear();
+    EncryptedStorage.clear();
   };
 
   return (
@@ -174,18 +256,23 @@ const LoginScreen: FC<
                   buttonType="primary"
                   handlePress={handleSubmit(onSubmit)}
                   title="Login"
-                  customStyle={styles.loginButton}
+                  customStyle={[
+                    styles.loginButton,
+                    isBiometricsForLogin && styles.fixedButtonWidth,
+                  ]}
                 />
-                <CustomButton
-                  buttonType="primary"
-                  handlePress={goToNext}
-                  customStyle={styles.biometricButton}>
-                  <FingerPrint />
-                </CustomButton>
+                {isBiometricsForLogin ? (
+                  <CustomButton
+                    buttonType="primary"
+                    handlePress={handleBiometricsLogin}
+                    customStyle={styles.biometricButton}>
+                    <FingerPrint />
+                  </CustomButton>
+                ) : null}
               </View>
               <View style={styles.centeredText}>
                 <Text style={styles.darkGreyText}>No Account?</Text>
-                <Pressable onPress={() => console.log(1)}>
+                <Pressable onPress={clearStorages}>
                   <Text style={styles.link}>Sign UP</Text>
                 </Pressable>
               </View>

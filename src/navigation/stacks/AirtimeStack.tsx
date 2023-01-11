@@ -9,7 +9,7 @@ const AirtimeStackNavigator: React.FC = () => {
   return (
     <AirtimeStack.Navigator>
       <AirtimeStack.Screen
-        name={ROUTES.TABS.AIRTIME}
+        name={ROUTES.AIRTIME.MAIN}
         component={AirtimeContainer}
         options={{headerShown: false}}
       />

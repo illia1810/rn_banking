@@ -9,7 +9,7 @@ const PaymentsStackNavigator: React.FC = () => {
   return (
     <PaymentsStack.Navigator>
       <PaymentsStack.Screen
-        name={ROUTES.TABS.PAYMENTS}
+        name={ROUTES.PAYMENTS.MAIN}
         component={PaymentContainer}
         options={{headerShown: false}}
       />

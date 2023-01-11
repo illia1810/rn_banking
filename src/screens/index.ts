@@ -11,3 +11,4 @@ export {default as FirstBMAContainer} from './Transfers/FirstBMAScreen/FirstBMAC
 export {default as SecondBMAContainer} from './Transfers/SecondBMAScreen/SecondBMAContainer';
 export {default as ManageBiometricsContainer} from './More/ManageBiometrics/ManageBiometricsContainer';
 export {default as ProfileImageContainer} from './More/ProfileImage/ProfileImageContainer';
+export {default as ConfirmBiometricsContainer} from './More/ConfirmBiometrics/ConfirmBiometricsContainer';
