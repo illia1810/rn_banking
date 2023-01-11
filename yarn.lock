@@ -6701,6 +6701,11 @@
   dependencies:
     "prop-types" "^15.7.2"
 
+"react-native-biometrics@^3.0.1":
+  "integrity" "sha512-Ru80gXRa9KG04sl5AB9HyjLjVbduhqZVjA+AiOSGqr+fNqCDmCu9y5WEksnjbnniNLmq1yGcw+qcLXmR1ddLDQ=="
+  "resolved" "https://registry.npmjs.org/react-native-biometrics/-/react-native-biometrics-3.0.1.tgz"
+  "version" "3.0.1"
+
 "react-native-codegen@^0.70.6":
   "integrity" "sha512-kdwIhH2hi+cFnG5Nb8Ji2JwmcCxnaOOo9440ov7XDzSvGfmUStnCzl+MCW8jLjqHcE4icT7N9y+xx4f50vfBTw=="
   "resolved" "https://registry.npmjs.org/react-native-codegen/-/react-native-codegen-0.70.6.tgz"
@@ -6715,6 +6720,11 @@
   "integrity" "sha512-K4QDvh20F9KVQFmTr/PAta8JN2WofO7Ks4ZIq2U3EHKlRXMoMP0AplrV4oR5oRclaw9ltWecivrK/xWX85HC8A=="
   "resolved" "https://registry.npmjs.org/react-native-custom-switch/-/react-native-custom-switch-1.0.7.tgz"
   "version" "1.0.7"
+
+"react-native-encrypted-storage@^4.0.3":
+  "integrity" "sha512-0pJA4Aj2S1PIJEbU7pN/Qvf7JIJx3hFywx+i+bLHtgK0/6Zryf1V2xVsWcrD50dfiu3jY1eN2gesQ5osGxE7jA=="
+  "resolved" "https://registry.npmjs.org/react-native-encrypted-storage/-/react-native-encrypted-storage-4.0.3.tgz"
+  "version" "4.0.3"
 
 "react-native-flipper@^0.176.1":
   "integrity" "sha512-kioHzO9JzA2ReW9LfopIEUXeD6gDp3Mw6KjQbELvoLVIEMvCfGz59akezw4l/S8i6qkFVcnwh5c/7Z+L3nthQA=="
@@ -6822,7 +6832,7 @@
   dependencies:
     "use-latest-callback" "^0.1.5"
 
-"react-native@*", "react-native@^0.0.0-0 || 0.60 - 0.71 || 1000.0.0", "react-native@>=0.23.1", "react-native@>=0.29", "react-native@>=0.40.0", "react-native@>=0.59.0", "react-native@>0.62.0", "react-native@0.70.6":
+"react-native@*", "react-native@^0.0.0-0 || 0.60 - 0.71 || 1000.0.0", "react-native@>=0.23.1", "react-native@>=0.29", "react-native@>=0.40.0", "react-native@>=0.59.0", "react-native@>=0.60.0", "react-native@>0.62.0", "react-native@0.70.6":
   "integrity" "sha512-xtQdImPHnwgraEx3HIZFOF+D1hJ9bC5mfpIdUGoMHRws6OmvHAjmFpO6qfdnaQ29vwbmZRq7yf14sbury74R/w=="
   "resolved" "https://registry.npmjs.org/react-native/-/react-native-0.70.6.tgz"
   "version" "0.70.6"

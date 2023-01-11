@@ -13,3 +13,7 @@ export type TTransferFormData = {
 export type TTransferConfirmation = {
   pinCode: string;
 };
+
+export type TBiometricsConfirmation = {
+  pinCode: string;
+};

@@ -1,9 +1,7 @@
 import {yupResolver} from '@hookform/resolvers/yup';
-import {useNavigation, useRoute} from '@react-navigation/native';
-import React, {useState} from 'react';
+import React from 'react';
 import {Controller, useForm} from 'react-hook-form';
 import {
-  Alert,
   Keyboard,
   Pressable,
   ScrollView,
@@ -18,6 +16,7 @@ import {FingerPrint, LikeIcon} from '../../../assets/svg';
 import {LargeModal, SwitchButton} from '../../../components';
 import CustomButton from '../../../components/CustomButton';
 import {TTransferConfirmation} from '../../../types';
+import {TSecondBMAProps} from './SecondBMATypes';
 import styles from './styles';
 
 const defaultValues = {
@@ -33,13 +32,18 @@ const regularTransferConfirmSchema = yup
   })
   .required();
 
-const SecondBMAView = () => {
-  const [savingBeneficiary, setSavingBeneficiary] = useState(false);
-  const [showModal, setShowModal] = useState(false);
-  const navigation = useNavigation();
-  const {params} = useRoute();
-  const {data} = params;
-
+const SecondBMAView = ({
+  dataForTransfer,
+  onBiometricsConfirmation,
+  onTransferSubmit,
+  isSavingBeneficiary,
+  showModal,
+  onGoBack,
+  onCloseModal,
+  onSavingBeneficiaryChange,
+  onSuccessTransfer,
+  pinCodeFromStorage,
+}: TSecondBMAProps) => {
   const {
     control,
     handleSubmit,
@@ -48,27 +52,6 @@ const SecondBMAView = () => {
     defaultValues: defaultValues,
     resolver: yupResolver(regularTransferConfirmSchema),
   });
-
-  const handleGoBack = () => navigation.goBack();
-  const closeModal = () => setShowModal(false);
-  const onSubmit = (dataFromInput: TTransferConfirmation) => {
-    if (errors.pinCode?.message) {
-      Alert.alert('Please enter PIN', '', [
-        {
-          text: 'Okay',
-        },
-      ]);
-    }
-    if (dataFromInput.pinCode === '1111') {
-      setShowModal(true);
-    } else {
-      Alert.alert('Wrong PIN', '', [
-        {
-          text: 'Try again',
-        },
-      ]);
-    }
-  };
 
   return (
     <SafeAreaView edges={['right', 'left', 'bottom']} style={styles.safeArea}>
@@ -79,21 +62,27 @@ const SecondBMAView = () => {
             <View style={styles.receiptContainer}>
               <View style={styles.ammountContainer}>
                 <Text style={styles.descriptionPrimary}>Ammount</Text>
-                <Text style={styles.infoAmmount}>{data.ammount}</Text>
+                <Text style={styles.infoAmmount}>
+                  {dataForTransfer.ammount}
+                </Text>
               </View>
               <View style={styles.receiptInfo}>
                 <Text style={styles.descriptionSecondary}>From Account:</Text>
-                <Text style={styles.infoExtra}>{data.sourceAcc}</Text>
+                <Text style={styles.infoExtra}>
+                  {dataForTransfer.sourceAcc}
+                </Text>
               </View>
               <View style={styles.receiptInfo}>
                 <Text style={styles.descriptionSecondary}>
                   Destination Account:
                 </Text>
-                <Text style={styles.infoExtra}>{data.destinationAcc}</Text>
+                <Text style={styles.infoExtra}>
+                  {dataForTransfer.destinationAcc}
+                </Text>
               </View>
               <View style={[styles.receiptInfo, styles.receiptInfoLast]}>
                 <Text style={styles.descriptionSecondary}>Remark:</Text>
-                <Text style={styles.infoExtra}>{data.remark}</Text>
+                <Text style={styles.infoExtra}>{dataForTransfer.remark}</Text>
               </View>
             </View>
             <View style={styles.pinTitleContainer}>
@@ -104,7 +93,7 @@ const SecondBMAView = () => {
               control={control}
               render={({field: {onChange, value}}) => (
                 <SmoothPinCodeInput
-                  value={value}
+                  value={pinCodeFromStorage ? pinCodeFromStorage : value}
                   onTextChange={onChange}
                   codeLength={4}
                   cellSpacing={8}
@@ -122,36 +111,36 @@ const SecondBMAView = () => {
             <View style={styles.containerWithSwitch}>
               <Text style={styles.switchTitle}>Save Beneficiary</Text>
               <SwitchButton
-                value={savingBeneficiary}
-                setValue={setSavingBeneficiary}
+                value={isSavingBeneficiary}
+                onValueChange={onSavingBeneficiaryChange}
               />
             </View>
             <View style={styles.buttonsContainer}>
               <CustomButton
                 buttonType="primary"
-                handlePress={handleSubmit(onSubmit)}
+                handlePress={handleSubmit(onTransferSubmit)}
                 title="Continue"
                 customStyle={styles.loginButton}
               />
               <CustomButton
                 buttonType="primary"
-                handlePress={() => console.log(1)}
+                handlePress={onBiometricsConfirmation}
                 customStyle={styles.biometricButton}>
                 <FingerPrint />
               </CustomButton>
             </View>
-            <Pressable onPress={handleGoBack}>
+            <Pressable onPress={onGoBack}>
               <Text style={styles.goBackButton}>Back</Text>
             </Pressable>
             <LargeModal
               icon={<LikeIcon />}
               modalVisible={showModal}
               title={'Transfer is Successul'}
-              hideModal={closeModal}
+              hideModal={onCloseModal}
               primaryButtonTitle={'Continue'}
-              onPrimaryButtonPress={() => console.log(1)}
+              onPrimaryButtonPress={onSuccessTransfer}
               secondaryButtonTitle={'Cancel'}
-              onSecondaryButtonPress={closeModal}
+              onSecondaryButtonPress={onCloseModal}
             />
           </View>
           <View style={styles.paginationContainer}>

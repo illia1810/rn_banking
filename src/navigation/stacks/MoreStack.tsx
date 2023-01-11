@@ -3,6 +3,7 @@ import React from 'react';
 import {CustomHeader} from '../../components';
 import {ROUTES} from '../../constants';
 import {
+  ConfirmBiometricsContainer,
   ManageBiometricsContainer,
   MoreContainer,
   ProfileImageContainer,
@@ -35,6 +36,17 @@ const MoreStackNavigator: React.FC = () => {
         options={{
           header: () => {
             return <CustomHeader goBackButton title="Profile Image" />;
+          },
+        }}
+      />
+      <MoreStack.Screen
+        name={ROUTES.MORE.BIOMETRICS_CONFIRMATION}
+        component={ConfirmBiometricsContainer}
+        options={{
+          header: () => {
+            return (
+              <CustomHeader goBackButton title="Manage Biometrics" bellIcon />
+            );
           },
         }}
       />

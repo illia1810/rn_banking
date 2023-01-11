@@ -4,14 +4,14 @@ import {COLORS} from '../../constants';
 
 interface ISwitchButtonProps {
   value: boolean;
-  setValue: (value: boolean) => void;
+  onValueChange?: () => void;
 }
 
-const SwitchButton: FC<ISwitchButtonProps> = ({value, setValue}) => {
+const SwitchButton: FC<ISwitchButtonProps> = ({value, onValueChange}) => {
   return (
     <Switch
       value={value}
-      onValueChange={val => setValue(val)}
+      onValueChange={onValueChange}
       disabled={false}
       activeText={'On'}
       inActiveText={'Off'}
