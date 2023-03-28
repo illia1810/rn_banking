@@ -8,12 +8,15 @@
  * @format
  */
 import 'react-native-gesture-handler';
-import React from 'react';
+import React, {useEffect} from 'react';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
-
+import SplashScreen from 'react-native-splash-screen';
 import RootNavigator from './src/navigation';
 
 const App = () => {
+  useEffect(() => {
+    SplashScreen.hide();
+  }, []);
   return (
     <SafeAreaProvider>
       <RootNavigator />
