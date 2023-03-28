@@ -37,7 +37,7 @@ const DashboardContainer = () => {
 
   useEffect(() => {
     AsyncStorage.getItem('BiometricsForLogin').then(val =>
-      val === 'false' && params?.availableBiometrics
+      (val === 'false' || val === null) && params?.availableBiometrics
         ? showBiometricsAlert()
         : null,
     );
