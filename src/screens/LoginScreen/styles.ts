@@ -66,8 +66,10 @@ export default StyleSheet.create({
     marginBottom: 32,
   },
   loginButton: {
-    maxWidth: 285,
     borderRadius: 130,
+  },
+  fixedButtonWidth: {
+    maxWidth: 285,
   },
   biometricButton: {
     maxWidth: 50,

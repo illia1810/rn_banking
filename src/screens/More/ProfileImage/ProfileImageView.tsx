@@ -19,10 +19,14 @@ const ProfileImageView = ({
     });
   };
 
-  const handleDeleteImage = () => {
-    onSelectImage('');
-    AsyncStorage.removeItem('ProfileImagePath');
-    onDeleteItemFromStore('');
+  const handleDeleteImage = async () => {
+    try {
+      await AsyncStorage.removeItem('ProfileImagePath');
+      onSelectImage('');
+      onDeleteItemFromStore('');
+    } catch (e) {
+      Alert.alert(String(e));
+    }
   };
 
   const handleContinue = async () => {

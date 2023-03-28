@@ -20,10 +20,12 @@ import {
   TransferActive,
   TransferInActive,
 } from '../../assets/svg';
+import {useRoute} from '@react-navigation/native';
 
 const Tab = createBottomTabNavigator();
 
 const BottomTabBar = () => {
+  const {params} = useRoute();
   return (
     <Tab.Navigator
       screenOptions={({route}) => ({
@@ -48,11 +50,12 @@ const BottomTabBar = () => {
         name={ROUTES.TABS.DASHBOARD}
         component={DashboardStackNavigator}
         options={{headerShown: false}}
+        initialParams={params}
       />
       <Tab.Screen
         name={ROUTES.TABS.TRANSFERS}
         component={TransferStackNavigator}
-        options={{headerShown: false}}
+        options={{headerShown: false, lazy: true}}
       />
       <Tab.Screen
         name={ROUTES.TABS.AIRTIME}
